@@ -1,6 +1,6 @@
 TIM_HandleTypeDef htim1;
 TIM_OC_InitTypeDef sConfigOC = { 0 };
-int32_t CH1_DC = 0;
+int32_t value = 0;
 
 void setup() {
   // put your setup code here, to run once:
@@ -24,14 +24,14 @@ void setup() {
 
 void loop() {
 
-  while (CH1_DC < 500) {
-    TIM1->CCR1 = CH1_DC;
-    CH1_DC += 1;
+  while (value < 500) {
+    TIM1->CCR1 = value;
+    value += 1;
     HAL_Delay(1);
   }
-  while (CH1_DC > 0) {
-    TIM1->CCR1 = CH1_DC;
-    CH1_DC -= 1;
+  while (value > 0) {
+    TIM1->CCR1 = value;
+    value -= 1;
     HAL_Delay(1);
   }
 
